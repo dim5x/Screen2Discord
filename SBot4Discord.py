@@ -17,7 +17,7 @@ async def clr(ctx, amount: int):
     """Удаляет сообщения. !clean N -  удалит N последних сообщений. """
 
     await ctx.channel.purge(limit=amount + 1)
-    await ctx.send(f"{amount} message(s) got deleted")
+    await ctx.send(f"{amount} сообщений было удалено.")
     time.sleep(5)
     await ctx.channel.purge(limit=1)
 

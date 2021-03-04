@@ -20,15 +20,15 @@ async def on_ready():
 
 @bot.command()
 async def ping(ctx):
-    """Пинг до бота. !ping."""
+    """-----Пинг до бота. """
 
     ping = round(bot.latency * 1000)
-    await ctx.send(f"мой пинг {ping} мс")
+    await ctx.send(f"мой пинг {ping} мс. А твой?")
 
 
 @bot.command()
 async def clr(ctx, amount: int):
-    """Удаляет сообщения. !clean N -  удалит N последних сообщений. """
+    """-----Удаляет сообщения. !clean N -  удалит N последних сообщений. """
 
     await ctx.channel.purge(limit=amount + 1)
     await ctx.send(f"{amount} сообщения(ий) было удалено.")
@@ -43,7 +43,7 @@ async def clr(ctx, amount: int):
 
 @bot.command()
 async def ss(ctx):
-    """Делает скриншот."""
+    """-----Делает скриншот."""
     im = grab(bbox=(0, 0, 960, 1080))
     im.save('box.png')
     file = discord.File("box.png", filename="box.png")
@@ -51,8 +51,12 @@ async def ss(ctx):
 
 
 @bot.command()
-async def test(ctx):
-    await ctx.send("Clean", tts=True)
+async def login(ctx):
+    """-----Логин-пароль для площадок."""
+    with open('login', encoding='UTF-8') as f:
+        s = f.read()
+        print(s)
+    await ctx.send(s, tts=False)
 
 
 # Так как мы указали префикс в settings, обращаемся к словарю с ключом prefix.

@@ -3,7 +3,7 @@ from pyscreenshot import grab
 import time
 import discord
 
-TOKEN = 'ODE2NDgxMzE1OTEzODU5MTEy.YD7lew.nw4jupAWsAUKxo4l42pdoaF30K4'
+TOKEN = ''
 
 # import json
 # import requests

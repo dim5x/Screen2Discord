@@ -1,8 +1,8 @@
-from discord.ext import commands
-from pyscreenshot import grab
-import time
-import discord
 import os
+import time
+from discord.ext import commands
+import discord
+from pyscreenshot import grab
 
 TOKEN = ''
 
@@ -13,14 +13,28 @@ TOKEN = ''
 bot = commands.Bot(command_prefix='!')
 
 
+@bot.event
+async def on_ready():
+    print("Бот запущен.")
+
+
+@bot.command()
+async def ping(ctx):
+    """Пинг до бота. !ping."""
+
+    ping = round(bot.latency * 1000)
+    await ctx.send(f"мой пинг {ping} мс")
+
+
 @bot.command()
 async def clr(ctx, amount: int):
     """Удаляет сообщения. !clean N -  удалит N последних сообщений. """
 
     await ctx.channel.purge(limit=amount + 1)
     await ctx.send(f"{amount} сообщения(ий) было удалено.")
+    await ctx.send("Clean", tts=True)
     time.sleep(5)
-    await ctx.channel.purge(limit=1)
+    await ctx.channel.purge(limit=2)
     try:
         os.remove('box.png')
     except:
@@ -29,11 +43,16 @@ async def clr(ctx, amount: int):
 
 @bot.command()
 async def ss(ctx):
-    """!ss - делает скриншот."""
+    """Делает скриншот."""
     im = grab(bbox=(0, 0, 960, 1080))
     im.save('box.png')
     file = discord.File("box.png", filename="box.png")
     await ctx.send(file=file)
+
+
+@bot.command()
+async def test(ctx):
+    await ctx.send("Clean", tts=True)
 
 
 # Так как мы указали префикс в settings, обращаемся к словарю с ключом prefix.

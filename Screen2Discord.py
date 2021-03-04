@@ -1,3 +1,4 @@
+import os
 from discord_webhook import DiscordWebhook
 from pyscreenshot import grab
 import keyboard
@@ -20,6 +21,15 @@ def hook():
     return webhook.execute()
 
 
+def clean():
+    try:
+        os.remove('box.png')
+    except:
+        pass
+
+
 # Биндим сочетания клавиш для функции скриншотера и выхода.
 keyboard.add_hotkey('Ctrl + 1', hook)
+keyboard.add_hotkey('Ctrl + 0', clean)
+
 keyboard.wait('Ctrl + Q')

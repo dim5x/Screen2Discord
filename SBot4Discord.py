@@ -2,6 +2,7 @@ from discord.ext import commands
 from pyscreenshot import grab
 import time
 import discord
+import os
 
 TOKEN = ''
 
@@ -20,6 +21,10 @@ async def clr(ctx, amount: int):
     await ctx.send(f"{amount} сообщений было удалено.")
     time.sleep(5)
     await ctx.channel.purge(limit=1)
+    try:
+        os.remove('box.png')
+    except:
+        pass
 
 
 @bot.command()

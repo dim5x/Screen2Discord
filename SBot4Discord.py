@@ -10,7 +10,7 @@ TOKEN = ''
 # import requests
 # URL = 'https://discordapp.com/oauth2/authorize?&client_id=816481315913859112&scope=bot&permissions=2048'
 
-bot = commands.Bot(command_prefix='!')
+bot = commands.Bot(command_prefix='')
 
 
 @bot.event
@@ -28,7 +28,7 @@ async def ping(ctx):
 
 @bot.command()
 async def clr(ctx, amount: int):
-    """-----Удаляет сообщения. !clean N -  удалит N последних сообщений. """
+    """-----Удаляет сообщения. clr N -  удалит N последних сообщений. """
 
     await ctx.channel.purge(limit=amount + 1)
     await ctx.send(f"{amount} сообщения(ий) было удалено.")

